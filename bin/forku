@@ -1,3 +1,12 @@
 #!/usr/bin/env bash
-echo "fork github"
 
+USER_GITHUB_OG="threeiem"
+USER_GITHUB_FORK="threeiem"
+
+REPO_OG="${1}"
+REPO_FORK="${2}"
+
+git clone git@github.com:"${USER_GITHUB_FORK}"/"${REPO_FORK}".git
+cd "${REPO_FORK}"
+git remote add upstream git@github.com:"${USER_GITHUB_OG}"/"${REPO_OG}".git
+git pull upstream master
