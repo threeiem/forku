@@ -1,10 +1,31 @@
 #!/usr/bin/env bash
 
-USER_GITHUB_OG="threeiem"
-USER_GITHUB_FORK="threeiem"
+YO="${0%/*}"
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
 
-REPO_OG="${1}"
-REPO_FORK="${2}"
+USER_GITHUB_OG="${1}"
+REPO_OG="${2}"
+
+USER_GITHUB_FORK="${3}"
+REPO_FORK="${4}"
+
+usage(){
+  echo "
+    ${YO}/${BOLD}forku${NORMAL} <${BOLD}original_user${NORMAL}> <${BOLD}original_name${NORMAL}> <${BOLD}fork_user${NORMAL}> <${BOLD}fork_url${NORMAL}> 
+
+    ex.) ${YO}/${BOLD}forku pezmeng lolpush sweetbob bobslolpush${NORMAL}
+
+    Adds ${BOLD}pezmeng${NORMAL}'s \"${BOLD}lolpush${NORMAL}\" github repository as an
+    upstream github repository for ${BOLD}sweetbob${NORMAL}'s \"${BOLD}bobslolpush${NORMAL}\".
+  "
+  exit
+}
+
+
+if [ "${1}" == "" ]; then
+  usage
+fi
 
 git clone git@github.com:"${USER_GITHUB_FORK}"/"${REPO_FORK}".git
 cd "${REPO_FORK}"
