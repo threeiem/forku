@@ -4,20 +4,18 @@ YO="${0%/*}"
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
-USER_GITHUB_OG="${1}"
+GITHUB_USER="${1}"
 REPO_OG="${2}"
-
-USER_GITHUB_FORK="${3}"
-REPO_FORK="${4}"
+REPO_FORK="${3}"
 
 usage(){
   echo "
-    ${YO}/${BOLD}forku${NORMAL} <${BOLD}original_user${NORMAL}> <${BOLD}original_name${NORMAL}> <${BOLD}fork_user${NORMAL}> <${BOLD}fork_url${NORMAL}> 
+    ${YO}/${BOLD}forku${NORMAL} <${BOLD}github_user${NORMAL}> <${BOLD}original_repo_name${NORMAL}> <${BOLD}fork_repo_name${NORMAL}> 
 
-    ex.) ${YO}/${BOLD}forku pezmeng lolpush sweetbob bobslolpush${NORMAL}
+    ex.) ${YO}/${BOLD}forku pezmeng lolpush lolsnark${NORMAL}
 
-    Adds ${BOLD}pezmeng${NORMAL}'s \"${BOLD}lolpush${NORMAL}\" github repository as an
-    upstream github repository for ${BOLD}sweetbob${NORMAL}'s \"${BOLD}bobslolpush${NORMAL}\".
+    Adds ${BOLD}pezmeng${NORMAL}'s \"${BOLD}lolpush${NORMAL}\" github repository
+    as an upstream github repository for \"${BOLD}lolsnark${NORMAL}\".
   "
   exit
 }
@@ -27,7 +25,7 @@ if [ "${1}" == "" ]; then
   usage
 fi
 
-git clone git@github.com:"${USER_GITHUB_FORK}"/"${REPO_FORK}".git
+git clone git@github.com:"${GITHUB_USER}"/"${REPO_FORK}".git
 cd "${REPO_FORK}"
-git remote add upstream git@github.com:"${USER_GITHUB_OG}"/"${REPO_OG}".git
+git remote add upstream git@github.com:"${GITHUB_USER}"/"${REPO_OG}".git
 git pull upstream master

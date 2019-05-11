@@ -5,7 +5,7 @@ I like to use some projects in Github as templates and this script helps me "for
 ## Usage
 
 ```
-bin/forku pezmeng lolpush sweetbob bobslolpush
+bin/forku pezmeng lolpush lolsnark
 ```
 
-Adds pezmeng's "lolpush" github repository as an upstream github repository for sweetbob's "bobslolpush".
+Adds pezmeng's "lolpush" github repository as an upstream github repository for "lolsnark".
